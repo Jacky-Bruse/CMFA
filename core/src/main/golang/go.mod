@@ -55,7 +55,6 @@ require (
 	github.com/mdlayher/socket v0.4.1 // indirect
 	github.com/metacubex/amneziawg-go v0.0.0-20240922133038-fdf3a4d5a4ab // indirect
 	github.com/metacubex/bart v0.19.0 // indirect
-	github.com/metacubex/bart v0.19.0 // indirect
 	github.com/metacubex/bbolt v0.0.0-20240822011022-aed6d4850399 // indirect
 	github.com/metacubex/chacha v0.1.1 // indirect
 	github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759 // indirect
@@ -66,7 +65,6 @@ require (
 	github.com/metacubex/sing-quic v0.0.0-20250119013740-2a19cce83925 // indirect
 	github.com/metacubex/sing-shadowsocks v0.2.8 // indirect
 	github.com/metacubex/sing-shadowsocks2 v0.2.2 // indirect
-	github.com/metacubex/sing-tun v0.4.6-0.20250312042506-6d3b4dc05c04 // indirect
 	github.com/metacubex/sing-tun v0.4.6-0.20250312042506-6d3b4dc05c04 // indirect
 	github.com/metacubex/sing-vmess v0.1.14-0.20250228002636-abc39e113b82 // indirect
 	github.com/metacubex/sing-wireguard v0.0.0-20241126021510-0827d417b589 // indirect
@@ -81,7 +79,6 @@ require (
 	github.com/oschwald/maxminddb-golang v1.12.0 // indirect
 	github.com/pierrec/lz4/v4 v4.1.14 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
-	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/quic-go/qtls-go1-20 v0.4.1 // indirect
