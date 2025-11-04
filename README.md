@@ -38,7 +38,7 @@ Feature of [Clash.Meta](https://github.com/MetaCubeX/mihomo/tree/Alpha)
 5. Build
 
    ```bash
-   ./gradlew app:assembleMeta-AlphaRelease
+   ./gradlew app:assembleAlphaRelease
    ```
 
 ### Automation
