@@ -48,7 +48,7 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mdlayher/netlink v1.7.2 // indirect
 	github.com/mdlayher/socket v0.4.1 // indirect
-	github.com/metacubex/amneziawg-go v0.0.0-20251104171318-7cbf6d3ea6bb // indirect
+	github.com/metacubex/amneziawg-go v0.0.0-20251104174305-5a0e9f7e361d // indirect
 	github.com/metacubex/ascon v0.1.0 // indirect
 	github.com/metacubex/bart v0.26.0 // indirect
 	github.com/metacubex/bbolt v0.0.0-20250725135710-010dbbbb7a5b // indirect
@@ -57,7 +57,7 @@ require (
 	github.com/metacubex/fswatch v0.1.1 // indirect
 	github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759 // indirect
 	github.com/metacubex/gvisor v0.0.0-20250919004547-6122b699a301 // indirect
-	github.com/metacubex/kcp-go v0.0.0-20251007183319-0df1aec1639a // indirect
+	github.com/metacubex/kcp-go v0.0.0-20251105084629-8c93f4bf37be // indirect
 	github.com/metacubex/nftables v0.0.0-20250708020511-be959b9e8902 // indirect
 	github.com/metacubex/quic-go v0.55.1-0.20251024060151-bd465f127128 // indirect
 	github.com/metacubex/randv2 v0.2.0 // indirect
