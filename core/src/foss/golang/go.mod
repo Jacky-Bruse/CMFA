@@ -57,12 +57,12 @@ require (
 	github.com/metacubex/mlkem v0.1.0 // indirect
 	github.com/metacubex/nftables v0.0.0-20250708020511-be959b9e8902 // indirect
 	github.com/metacubex/qpack v0.6.0 // indirect
-	github.com/metacubex/quic-go v0.58.1-0.20260111090927-e959acbf7465 // indirect
+	github.com/metacubex/quic-go v0.59.1-0.20260112033758-aa29579f2001 // indirect
 	github.com/metacubex/randv2 v0.2.0 // indirect
 	github.com/metacubex/restls-client-go v0.1.7 // indirect
 	github.com/metacubex/sing v0.5.6 // indirect
 	github.com/metacubex/sing-mux v0.3.4 // indirect
-	github.com/metacubex/sing-quic v0.0.0-20251217080445-b15217cb57f3 // indirect
+	github.com/metacubex/sing-quic v0.0.0-20260112044712-65d17608159e // indirect
 	github.com/metacubex/sing-shadowsocks v0.2.12 // indirect
 	github.com/metacubex/sing-shadowsocks2 v0.2.7 // indirect
 	github.com/metacubex/sing-shadowtls v0.0.0-20250503063515-5d9f966d17a2 // indirect
