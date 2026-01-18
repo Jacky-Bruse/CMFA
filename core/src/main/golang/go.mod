@@ -88,7 +88,7 @@ require (
 	github.com/sina-ghaderi/poly1305 v0.0.0-20220724002748-c5926b03988b // indirect
 	github.com/sina-ghaderi/rabaead v0.0.0-20220730151906-ab6e06b96e8c // indirect
 	github.com/sina-ghaderi/rabbitio v0.0.0-20220730151941-9ce26f4f872e // indirect
-	github.com/sirupsen/logrus v1.9.3 // indirect
+	github.com/sirupsen/logrus v1.9.4 // indirect
 	github.com/u-root/uio v0.0.0-20230220225925-ffce2a382923 // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
