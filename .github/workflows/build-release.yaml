@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      
+
       - name: Checkout submodules
         run: git submodule update --init --recursive --force
 
@@ -47,7 +47,7 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
-      
+
       - name: Convert and set version env
         id: process-version
         run: |
@@ -55,10 +55,10 @@ jobs:
           VERSION_TAG=${VERSION_TAG#v}                              # remove the 'v' prefix
           IFS='.' read -ra VERSION_PARTS <<< "$VERSION_TAG"         # split into array
           VERSION_CODE=$(printf "%1d%02d%03d" "${VERSION_PARTS[0]}" "${VERSION_PARTS[1]}" "${VERSION_PARTS[2]}")
-          
+
           echo "versonName=$VERSION_TAG" >> $GITHUB_OUTPUT          # "1.2.3"
           echo "versonCode=$VERSION_CODE" >> $GITHUB_OUTPUT         # "102003"
-      
+
       # Re-write version in build.gradle.kts
       - name: Re-write version
         uses: Devofure/advance-android-version-actions@v1.5
@@ -66,7 +66,7 @@ jobs:
           gradlePath: build.gradle.kts
           versionCode: ${{ steps.process-version.outputs.versonCode }}
           versionName: ${{ steps.process-version.outputs.versonName }}
-      
+
       # If any change found, commit it and push
       - name: Commit and push if changes
         run: |
@@ -99,7 +99,7 @@ jobs:
           echo keystore.password="$SIGNING_STORE_PASSWORD" > signing.properties
           echo key.alias="$SIGNING_KEY_ALIAS" >> signing.properties
           echo key.password="$SIGNING_KEY_PASSWORD" >> signing.properties
-            
+
           echo "cat signing.properties"
           cat signing.properties
 
@@ -123,6 +123,7 @@ jobs:
           generate_release_notes: true
 
       - name: Release Changelog Builder
+        id: release-changelog
         uses: mikepenz/release-changelog-builder-action@v4.1.1
         with:
           configurationJson: |
@@ -131,6 +132,64 @@ jobs:
                 "Update"
               ],
             }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Prepare Telegram changelog summary
+        id: telegram-changelog
+        shell: bash
+        env:
+          CHANGELOG: ${{ steps.release-changelog.outputs.changelog }}
+        run: |
+          summary=$(printf '%s\n' "$CHANGELOG" | awk '
+            BEGIN {
+              in_contributors = 0
+            }
+            /^##[[:space:]]+Contributors/ {
+              in_contributors = 1
+              next
+            }
+            /^##[[:space:]]+/ {
+              in_contributors = 0
+            }
+            in_contributors {
+              next
+            }
+            /^[[:space:]]+[*-][[:space:]]+/ {
+              next
+            }
+            /^[*-][[:space:]]+/ {
+              line = substr($0, 3)
+              gsub(/\r/, "", line)
+              gsub(/[[:space:]]+/, " ", line)
+              sub(/^[[:space:]]+/, "", line)
+              sub(/[[:space:]]+$/, "", line)
+              if (line == "" || line ~ /^(PR|Pull Request|Issue|Issues):/ || line ~ /^@/) {
+                next
+              }
+              items[++count] = "- " line
+            }
+            END {
+              if (count == 0) {
+                print "- See GitHub release notes for details."
+                exit
+              }
+
+              limit = count < 6 ? count : 6
+              for (i = 1; i <= limit; i++) {
+                print items[i]
+              }
+              if (count > 6) {
+                print "..."
+              }
+            }
+          ')
+
+          {
+            echo "summary<<EOF"
+            printf '%s\n' "$summary"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
 #      - name: Push to Telegram Group
 #        uses: appleboy/telegram-action@v0.1.1
@@ -140,7 +199,7 @@ jobs:
 #          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 #          document: app/build/outputs/apk/meta/release/*v8a-release.apk
 #          document: app/build/outputs/apk/meta/release/*v8a-release.apk
- 
+
 #        - name: Push to Telegram Bot
 #        uses: appleboy/telegram-action@v0.1.1
 #        with:
@@ -157,13 +216,24 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install python-telegram-bot
+
       - name: Push releases to Telegram Group
         run: |
           TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
           GROUP_ID="${{ secrets.TELEGRAM_GROUP_ID }}"  # Use the secret here
+          CHANGELOG_SUMMARY="${{ steps.telegram-changelog.outputs.summary }}"
           for file in app/build/outputs/apk/meta/release/*v8a-release.apk; do
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
             caption="🚀 New Releases on $current_date Enjoy! 🚀"
+            if [ -n "$CHANGELOG_SUMMARY" ]; then
+              caption="${caption}
+
+Changes:
+${CHANGELOG_SUMMARY}"
+            fi
+            if [ "${#caption}" -gt 1024 ]; then
+              caption="${caption:0:1021}..."
+            fi
             curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" \
               -F "chat_id=${GROUP_ID}" \
               -F "document=@${file}" \
@@ -174,9 +244,19 @@ jobs:
         run: |
           TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
           CHAT_ID="${{ secrets.TELEGRAM_USER_ID }}"  # Use the secret here
+          CHANGELOG_SUMMARY="${{ steps.telegram-changelog.outputs.summary }}"
           for file in app/build/outputs/apk/meta/release/*v8a-release.apk; do
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
             caption="🚀 New releases on $current_date Enjoy! 🚀"
+            if [ -n "$CHANGELOG_SUMMARY" ]; then
+              caption="${caption}
+
+Changes:
+${CHANGELOG_SUMMARY}"
+            fi
+            if [ "${#caption}" -gt 1024 ]; then
+              caption="${caption:0:1021}..."
+            fi
             curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" \
               -F "chat_id=${CHAT_ID}" \
               -F "document=@${file}" \
