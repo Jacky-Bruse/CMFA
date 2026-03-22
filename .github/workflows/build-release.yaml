@@ -137,59 +137,18 @@ jobs:
 
       - name: Prepare Telegram changelog summary
         id: telegram-changelog
-        shell: bash
+        shell: pwsh
         env:
           CHANGELOG: ${{ steps.release-changelog.outputs.changelog }}
         run: |
-          summary=$(printf '%s\n' "$CHANGELOG" | awk '
-            BEGIN {
-              in_contributors = 0
-            }
-            /^##[[:space:]]+Contributors/ {
-              in_contributors = 1
-              next
-            }
-            /^##[[:space:]]+/ {
-              in_contributors = 0
-            }
-            in_contributors {
-              next
-            }
-            /^[[:space:]]+[*-][[:space:]]+/ {
-              next
-            }
-            /^[*-][[:space:]]+/ {
-              line = substr($0, 3)
-              gsub(/\r/, "", line)
-              gsub(/[[:space:]]+/, " ", line)
-              sub(/^[[:space:]]+/, "", line)
-              sub(/[[:space:]]+$/, "", line)
-              if (line == "" || line ~ /^(PR|Pull Request|Issue|Issues):/ || line ~ /^@/) {
-                next
-              }
-              items[++count] = "- " line
-            }
-            END {
-              if (count == 0) {
-                print "- See GitHub release notes for details."
-                exit
-              }
-
-              limit = count < 6 ? count : 6
-              for (i = 1; i <= limit; i++) {
-                print items[i]
-              }
-              if (count > 6) {
-                print "..."
-              }
-            }
-          ')
-
+          $tempInput = Join-Path $env:RUNNER_TEMP "telegram-changelog.md"
+          Set-Content -Path $tempInput -Value $env:CHANGELOG -NoNewline
+          $summary = & ./.github/scripts/telegram-changelog-summary.ps1 -InputPath $tempInput
           {
-            echo "summary<<EOF"
-            printf '%s\n' "$summary"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+            "summary<<EOF"
+            $summary
+            "EOF"
+          } >> $env:GITHUB_OUTPUT
 
 #      - name: Push to Telegram Group
 #        uses: appleboy/telegram-action@v0.1.1
