@@ -226,10 +226,7 @@ jobs:
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
             caption="🚀 New Releases on $current_date Enjoy! 🚀"
             if [ -n "$CHANGELOG_SUMMARY" ]; then
-              caption="${caption}
-
-Changes:
-${CHANGELOG_SUMMARY}"
+              caption="${caption}"$'\n\n'"Changes:"$'\n'"${CHANGELOG_SUMMARY}"
             fi
             if [ "${#caption}" -gt 1024 ]; then
               caption="${caption:0:1021}..."
@@ -249,10 +246,7 @@ ${CHANGELOG_SUMMARY}"
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
             caption="🚀 New releases on $current_date Enjoy! 🚀"
             if [ -n "$CHANGELOG_SUMMARY" ]; then
-              caption="${caption}
-
-Changes:
-${CHANGELOG_SUMMARY}"
+              caption="${caption}"$'\n\n'"Changes:"$'\n'"${CHANGELOG_SUMMARY}"
             fi
             if [ "${#caption}" -gt 1024 ]; then
               caption="${caption:0:1021}..."
