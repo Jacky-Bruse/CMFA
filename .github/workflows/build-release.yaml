@@ -144,11 +144,9 @@ jobs:
           $tempInput = Join-Path $env:RUNNER_TEMP "telegram-changelog.md"
           Set-Content -Path $tempInput -Value $env:CHANGELOG -NoNewline
           $summary = & ./.github/scripts/telegram-changelog-summary.ps1 -InputPath $tempInput
-          {
-            "summary<<EOF"
-            $summary
-            "EOF"
-          } >> $env:GITHUB_OUTPUT
+          "summary<<EOF" >> $env:GITHUB_OUTPUT
+          $summary >> $env:GITHUB_OUTPUT
+          "EOF" >> $env:GITHUB_OUTPUT
 
 #      - name: Push to Telegram Group
 #        uses: appleboy/telegram-action@v0.1.1
