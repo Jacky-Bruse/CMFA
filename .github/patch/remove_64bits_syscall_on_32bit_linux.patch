@@ -1,0 +1,33 @@
+From bef1938b64a444911de119db613e60b9078ddd81 Mon Sep 17 00:00:00 2001
+From: wwqgtxx <wwqgtxx@gmail.com>
+Date: Sat, 9 May 2026 00:05:48 +0800
+Subject: [PATCH] Disable futex_time64 again
+
+---
+ src/runtime/os_linux32.go | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/runtime/os_linux32.go b/src/runtime/os_linux32.go
+index 1ee1cdcaf90051..4aa42132d73739 100644
+--- a/src/runtime/os_linux32.go
++++ b/src/runtime/os_linux32.go
+@@ -24,9 +24,6 @@ var use64bitsTimeOn32bits bool
+ 
+ //go:nosplit
+ func futex(addr unsafe.Pointer, op int32, val uint32, ts *timespec, addr2 unsafe.Pointer, val3 uint32) int32 {
+-	if use64bitsTimeOn32bits {
+-		return futex_time64(addr, op, val, ts, addr2, val3)
+-	}
+ 	// Downgrade ts.
+ 	var ts32 timespec32
+ 	var pts32 *timespec32
+@@ -45,9 +42,6 @@ func timer_settime64(timerid int32, flags int32, new, old *itimerspec) int32
+ 
+ //go:nosplit
+ func timer_settime(timerid int32, flags int32, new, old *itimerspec) int32 {
+-	if use64bitsTimeOn32bits {
+-		return timer_settime64(timerid, flags, new, old)
+-	}
+ 
+ 	var newts, oldts itimerspec32
+ 	var new32, old32 *itimerspec32
