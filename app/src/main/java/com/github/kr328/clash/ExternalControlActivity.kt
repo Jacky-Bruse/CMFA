@@ -53,6 +53,7 @@ class ExternalControlActivity : Activity(), CoroutineScope by MainScope() {
                     startActivity(PropertiesActivity::class.intent.setUUID(uuid))
                     finish()
                 }
+                return
             }
 
             Intents.ACTION_TOGGLE_CLASH -> if(Remote.broadcasts.clashRunning) {
