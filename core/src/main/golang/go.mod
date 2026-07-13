@@ -69,6 +69,8 @@ require (
 	github.com/metacubex/hkdf v0.1.0 // indirect
 	github.com/metacubex/hpke v0.1.0 // indirect
 	github.com/metacubex/http v0.1.6 // indirect
+	github.com/metacubex/jls-quic-go v0.0.0-20260712113821-d34e6f9b4c7f // indirect
+	github.com/metacubex/jls-tls v0.0.0-20260712171131-15870a03ac51 // indirect
 	github.com/metacubex/jsonv2 v0.0.0-20260518173308-f4597c22f1df // indirect
 	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604 // indirect
 	github.com/metacubex/mhurl v0.1.0 // indirect
