@@ -60,6 +60,8 @@ subprojects {
 
             versionName = "3.1.23"
             versionCode = 301023
+            versionName = "2.11.32"
+            versionCode = 211032
 
             resValue("string", "release_name", "v$versionName")
             resValue("integer", "release_code", "$versionCode")
