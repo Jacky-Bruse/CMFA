@@ -62,7 +62,7 @@ require (
 	github.com/metacubex/edwards25519 v1.2.0 // indirect
 	github.com/metacubex/fswatch v0.1.1 // indirect
 	github.com/metacubex/gopacket v1.1.20-0.20230608035415-7e2f98a3e759 // indirect
-	github.com/metacubex/gvisor v0.0.0-20260807021258-5683e078dbc4 // indirect
+	github.com/metacubex/gvisor v0.0.0-20260810011720-3cc44cf9ac22 // indirect
 	github.com/metacubex/hkdf v0.1.0 // indirect
 	github.com/metacubex/hpke v0.1.0 // indirect
 	github.com/metacubex/http v0.1.7 // indirect
@@ -71,7 +71,7 @@ require (
 	github.com/metacubex/jsonv2 v0.0.0-20260721082349-16b4998c8f89 // indirect
 	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604 // indirect
 	github.com/metacubex/mhurl v0.1.0 // indirect
-	github.com/metacubex/mipstack v0.0.0-20260807061409-f72adac977ea // indirect
+	github.com/metacubex/mipstack v0.0.0-20260810030937-189aceb10c32 // indirect
 	github.com/metacubex/mlkem v0.1.0 // indirect
 	github.com/metacubex/nftables v0.0.0-20260426003805-208c2c1ba2cb // indirect
 	github.com/metacubex/qpack v0.6.0 // indirect
@@ -86,7 +86,7 @@ require (
 	github.com/metacubex/sing-shadowsocks2 v0.2.7 // indirect
 	github.com/metacubex/sing-tun v0.4.22 // indirect
 	github.com/metacubex/sing-vmess v0.2.5 // indirect
-	github.com/metacubex/sing-wireguard v0.0.0-20260804133520-b873d2f3e751 // indirect
+	github.com/metacubex/sing-wireguard v0.0.0-20260810013230-110eac03c3f0 // indirect
 	github.com/metacubex/smux v0.0.0-20260105030934-d0c8756d3141 // indirect
 	github.com/metacubex/ssh v0.1.0 // indirect
 	github.com/metacubex/tailscale v0.0.0-20260807072706-a4fb5feabcbb // indirect
@@ -96,7 +96,7 @@ require (
 	github.com/metacubex/utls v1.8.7 // indirect
 	github.com/metacubex/wireguard-go v0.0.0-20250820062549-a6cecdd7f57f // indirect
 	github.com/metacubex/yamux v0.0.0-20250918083631-dd5f17c0be49 // indirect
-	github.com/metacubex/zerotier-go v0.0.0-20260804111226-0ced244971ee // indirect
+	github.com/metacubex/zerotier-go v0.0.0-20260810055754-4216d2c19212 // indirect
 	github.com/miekg/dns v1.1.63 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mroth/weightedrand/v2 v2.1.0 // indirect
