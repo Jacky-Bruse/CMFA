@@ -67,7 +67,7 @@ require (
 	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604 // indirect
 	github.com/metacubex/mhurl v0.1.0 // indirect
 	github.com/metacubex/mihomo v1.7.0 // indirect
-	github.com/metacubex/mipstack v0.0.0-20260810030937-189aceb10c32 // indirect
+	github.com/metacubex/mipstack v0.0.0-20260812143522-015f9ee3b4cb // indirect
 	github.com/metacubex/mlkem v0.1.0 // indirect
 	github.com/metacubex/nftables v0.0.0-20260426003805-208c2c1ba2cb // indirect
 	github.com/metacubex/qpack v0.6.0 // indirect
@@ -92,7 +92,7 @@ require (
 	github.com/metacubex/utls v1.8.7 // indirect
 	github.com/metacubex/wireguard-go v0.0.0-20250820062549-a6cecdd7f57f // indirect
 	github.com/metacubex/yamux v0.0.0-20250918083631-dd5f17c0be49 // indirect
-	github.com/metacubex/zerotier-go v0.0.0-20260810055754-4216d2c19212 // indirect
+	github.com/metacubex/zerotier-go v0.0.0-20260812022010-b725c9a42b89 // indirect
 	github.com/miekg/dns v1.1.63 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mroth/weightedrand/v2 v2.1.0 // indirect
