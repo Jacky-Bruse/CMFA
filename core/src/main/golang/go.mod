@@ -71,7 +71,7 @@ require (
 	github.com/metacubex/jsonv2 v0.0.0-20260721082349-16b4998c8f89 // indirect
 	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604 // indirect
 	github.com/metacubex/mhurl v0.1.0 // indirect
-	github.com/metacubex/mipstack v0.0.0-20260812143522-015f9ee3b4cb // indirect
+	github.com/metacubex/mipstack v0.0.0-20260814030134-37b80324ed9a // indirect
 	github.com/metacubex/mlkem v0.1.0 // indirect
 	github.com/metacubex/nftables v0.0.0-20260426003805-208c2c1ba2cb // indirect
 	github.com/metacubex/qpack v0.6.0 // indirect
@@ -92,11 +92,11 @@ require (
 	github.com/metacubex/tailscale v0.0.0-20260807072706-a4fb5feabcbb // indirect
 	github.com/metacubex/tailscale-wireguard-go v0.0.0-20260725073821-e61ab99cede2 // indirect
 	github.com/metacubex/tfo-go v0.0.0-20260623020846-376a77860b8c // indirect
-	github.com/metacubex/tls v0.1.7 // indirect
+	github.com/metacubex/tls v0.1.8 // indirect
 	github.com/metacubex/utls v1.8.7 // indirect
 	github.com/metacubex/wireguard-go v0.0.0-20250820062549-a6cecdd7f57f // indirect
 	github.com/metacubex/yamux v0.0.0-20250918083631-dd5f17c0be49 // indirect
-	github.com/metacubex/zerotier-go v0.0.0-20260812022010-b725c9a42b89 // indirect
+	github.com/metacubex/zerotier-go v0.0.0-20260813124750-13fa6f45da5f // indirect
 	github.com/miekg/dns v1.1.63 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/mroth/weightedrand/v2 v2.1.0 // indirect
