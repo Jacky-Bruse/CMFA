@@ -67,7 +67,7 @@ require (
 	github.com/metacubex/kcp-go v0.0.0-20260105040817-550693377604 // indirect
 	github.com/metacubex/mhurl v0.1.0 // indirect
 	github.com/metacubex/mihomo v1.7.0 // indirect
-	github.com/metacubex/mipstack v0.0.0-20260814152337-77acd9082d0e // indirect
+	github.com/metacubex/mipstack v0.0.0-20260815022418-9db62d54de59 // indirect
 	github.com/metacubex/mlkem v0.1.0 // indirect
 	github.com/metacubex/nftables v0.0.0-20260426003805-208c2c1ba2cb // indirect
 	github.com/metacubex/qpack v0.6.0 // indirect
