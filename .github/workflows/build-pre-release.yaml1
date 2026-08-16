@@ -95,26 +95,3 @@ jobs:
 
       - name: Release Changelog Builder
         uses: mikepenz/release-changelog-builder-action@v6
-
-
-      - name: Install Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-
-      - name: Install required Python packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install python-telegram-bot
-      - name: Push releases to Telegram
-        run: |
-          TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
-          CHAT_ID="${{ secrets.TELEGRAM_USER_ID }}"  # Use the secret here
-          for file in app/build/outputs/apk/meta-alpha/release/*v8a-release.apk; do
-            current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
-            caption="☯ New Beta Releases on $current_date Enjoy! ☯"
-            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument" \
-              -F "chat_id=${CHAT_ID}" \
-              -F "document=@${file}" \
-              -F "caption=${caption}"
-          done
