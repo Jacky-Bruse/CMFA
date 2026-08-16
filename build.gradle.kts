@@ -60,8 +60,6 @@ subprojects {
 
             versionName = "3.1.26"
             versionCode = 301026
-            versionName = "2.11.32"
-            versionCode = 211032
 
             resValue("string", "release_name", "v$versionName")
             resValue("integer", "release_code", "$versionCode")
@@ -191,6 +189,16 @@ subprojects {
                     isUniversalApk = true
                     reset()
                     include("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+                }
+            }
+
+            // cmfa-<versionName>-<abi>.apk
+            val outputVersionName = defaultConfig.versionName
+            applicationVariants.all {
+                outputs.all {
+                    this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
+                    val abi = filters.find { it.filterType == "ABI" }?.identifier ?: "universal"
+                    outputFileName = "cmfa-$outputVersionName-$abi.apk"
                 }
             }
         }

@@ -178,9 +178,9 @@ jobs:
           TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
           GROUP_ID="${{ secrets.TELEGRAM_GROUP_ID }}"  # Use the secret here
           CHANGELOG_SUMMARY="${{ steps.telegram-changelog.outputs.summary }}"
-          for file in app/build/outputs/apk/meta/release/*v8a-release.apk; do
+          for file in app/build/outputs/apk/meta/release/*arm64-v8a.apk; do
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
-            caption="🚀 New Releases on $current_date Enjoy! 🚀"
+            caption="🚀 New Releases v${{ steps.process-version.outputs.versonName }} on $current_date Enjoy! 🚀"
             if [ -n "$CHANGELOG_SUMMARY" ]; then
               caption="${caption}"$'\n\n'"Changes:"$'\n'"${CHANGELOG_SUMMARY}"
             fi
@@ -198,9 +198,9 @@ jobs:
           TELEGRAM_BOT_TOKEN="${{ secrets.TELEGRAM_BOT_TOKEN }}"
           CHAT_ID="${{ secrets.TELEGRAM_USER_ID }}"  # Use the secret here
           CHANGELOG_SUMMARY="${{ steps.telegram-changelog.outputs.summary }}"
-          for file in app/build/outputs/apk/meta/release/*v8a-release.apk; do
+          for file in app/build/outputs/apk/meta/release/*arm64-v8a.apk; do
             current_date=$(date +"%Y-%m-%d")  # Get current date in YYYY-MM-DD format
-            caption="🚀 New releases on $current_date Enjoy! 🚀"
+            caption="🚀 New releases v${{ steps.process-version.outputs.versonName }} on $current_date Enjoy! 🚀"
             if [ -n "$CHANGELOG_SUMMARY" ]; then
               caption="${caption}"$'\n\n'"Changes:"$'\n'"${CHANGELOG_SUMMARY}"
             fi
