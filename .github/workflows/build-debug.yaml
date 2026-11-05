@@ -66,6 +66,11 @@ jobs:
       #     echo "cat signing.properties"
       #     cat signing.properties
 
+      - name: Custom application id
+        run: |
+          echo "custom.application.id=com.classic.toolbox" >> local.properties
+          echo "remove.suffix=true" >> local.properties
+
       - name: Build
         if: success()
         run: ./gradlew --no-daemon app:assembleAlphaRelease
